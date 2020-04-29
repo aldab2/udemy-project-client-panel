@@ -1,0 +1,134 @@
+<div class="ui conainer" style="margin-top: 2rem;">
+  <div class="ui grid">
+    <div class="ui row">
+      <div class="eight wide column">
+        <a routerLink="/client/{{id}}" class="ui icon inverted primary button"><i class="left angle arrow icon"></i> Back to Client</a>
+      </div>
+    </div>
+    
+  </div>
+  <div class="ui segment">
+    <div class="ui center aligned header">Edit Client</div>
+    <div class="ui content">
+      <div class="ui grid">
+        <div class="four wide column"></div>
+        <div class="eight wide column">
+          <form #clientForm="ngForm" (ngSubmit)="onSumbit(clientForm)" class="ui form" [ngClass]="{'error':(clientFirstName.errors && clientFirstName.touched) || (clientlastName.errors && clientlastName.touched) || (clientemail.errors && clientemail.touched) || (clientphone.errors && clientphone.touched)|| (clientbalance.errors && clientbalance.touched)}">
+            <div class="ui grid">
+              <div class="row">
+                  <div class="column">
+                    <div class="field " [ngClass]="{'error':clientFirstName.errors && clientFirstName.touched}">
+                      <label>First Name</label>
+                      <input
+                        type="text" 
+                        name="firstName"
+                        placeholder="First Name"
+                        [(ngModel)]="client.firstName"
+                        minlength = 2
+                        required
+                        #clientFirstName="ngModel"
+                        
+                        
+                      >
+                      
+                    </div>
+                    <div class="field " [ngClass]="{'error':clientlastName.errors && clientlastName.touched}">
+                      <label>Last Name</label>
+                      <input
+                        type="text" 
+                        name="lastName"
+                        placeholder="Last Name"
+                        [(ngModel)]="client.lastName"
+                        minlength = 2
+                        required
+                        #clientlastName="ngModel"
+                        
+                        
+                      >
+                      
+                    </div>
+                    <div class="field " [ngClass]="{'error':clientemail.errors && clientemail.touched}">
+                      <label>Email</label>
+                      <input
+                        type="text" 
+                        name="email"
+                        placeholder="Email"
+                        [(ngModel)]="client.email"
+                        
+                        pattern ="^[^@]+@[^@]+\.[^@]+$"
+                        required
+                        #clientemail="ngModel"
+                        
+                        
+                      >
+                      
+                    </div>
+                    <div class="field " [ngClass]="{'error':clientphone.errors && clientphone.touched}">
+                      <label>Phone</label>
+                      <input
+                        type="text" 
+                        name="phone"
+                        placeholder="Phone"
+                        [(ngModel)]="client.phone"
+                        
+                        minlength="10"
+                        required
+                        #clientphone="ngModel"
+                        
+                        
+                      >
+                      
+                    </div>
+                    <div class="field " [ngClass]="{'error':clientbalance.errors && clientbalance.touched,'disabled':disableBalanceOnEdit}">
+                      <label>Balance</label>
+                      <input
+                        type="number" 
+                        name="balance"
+                        placeholder="Balance"
+                        [(ngModel)]="client.balance"
+                        #clientbalance="ngModel"
+                        [disabled]="disableBalanceOnEdit"
+                        
+                        
+                        
+                        
+                      >
+                      
+                    </div>
+            
+            
+                    <div class="ui error message">
+                      <div class="header">Not All Required Fields Match</div>
+                      <p>Please check the following are true:</p>
+                      <ul>
+                        <li>All fields are filled</li>
+                        <li>First and Last names are at least 2 characters long</li>
+                        <li>Entered email is valid.</li>
+                        <li>Mobile is valid and is at least 10 characters long.</li>
+                        <li>asd</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+              </div>
+              <div class="row">
+                <div class="sixteen wide column">
+                  <button  class="ui primary fluid button" type="submit">Submit</button>
+
+                </div>
+
+              </div>
+            </div>
+           
+               
+                
+              </form>
+        </div>
+        <div class="four wide column"></div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+

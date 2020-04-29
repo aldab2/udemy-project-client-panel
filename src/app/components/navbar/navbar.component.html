@@ -1,0 +1,9 @@
+<nav class="ui blue inverted menu">
+<a routerLink="/"  class="icon labeled item"><i class="dashboard large icon"> Client Panel</i></a>
+<a routerLink="/dashboard" class="item">Dashboard</a>
+<a routerLink="/register" *ngIf="!isLoggedIn && showRegister"  class="right item">Register</a>
+<a  routerLink="/login"  *ngIf="!isLoggedIn && showRegister" class=" item">Login</a>
+<a    *ngIf="isLoggedIn" class="right  item">{{loggedInUser}}</a>
+<a  routerLink="/settings"  *ngIf="isLoggedIn" class="  item">Settings</a>
+<a  (click)="onLogoutClick()" *ngIf="isLoggedIn" class="  item">Logout</a>
+</nav>

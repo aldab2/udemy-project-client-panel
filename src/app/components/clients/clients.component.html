@@ -1,0 +1,42 @@
+<div class="ui grid">
+  <div class="ui two column row">
+    <div class="ui eight wide bottom aligned column">
+     <!--  <h2 class="ui icon  header">
+        <i class="users icon"></i>
+        <div class="content">
+          Clients
+          <div class="sub header">Manage and view all the clients.</div>
+        </div>
+      </h2>
+       <h3></h3> -->
+       <h1><i class="users big icon"></i> Clients</h1>
+    </div>
+    <div class="ui eight wide  bottom aligned right aligned column">
+      <h3 class="ui  header">
+        Total Owned : {{totalOwed | currency:"SAR":"symbol"}}
+      </h3>
+    </div>
+  </div>
+  
+</div>
+<div class="ui  divider"></div>
+
+<table *ngIf="clients?.length >0;else noClients" class="ui celled table">
+  <thead>
+    <tr><th>Name</th>
+    <th>Email</th>
+    <th>Balance</th>
+    <th>Details</th>
+  </tr></thead>
+  <tbody>
+    <tr *ngFor="let client of clients">
+      <td data-label="Name">{{client.firstName}} {{client.lastName}}</td>
+      <td data-label="Email">{{client.email}}</td>
+      <td data-label="Balance">{{client.balance | currency:"SAR":"symbol"}}</td>
+      <td data-label="Details"><a routerLink="/client/{{client.id}}" class="ui black small icon  button">Details <i class="ui right angle icon"></i></a></td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #noClients>
+  <h5>There are no clients in the system</h5>
+</ng-template>

@@ -1,0 +1,53 @@
+<div class="ui container" style="margin-top: 15%">
+  <div class="ui  grid" >
+    <div class="row">
+      <div class="sixteen wide center aligned column">
+        
+        <h2 class="ui icon blue large header">
+          <i class="lock icon"></i>
+          <div class="content">
+            Client Panel
+            <div class="sub header"><h2>Register</h2></div>
+          </div>
+        </h2>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="ui three wide column"></div>
+      <div class="ui ten wide column">
+        <div class="ui raised segment" style="padding: 4rem;">
+          <form class="ui form" (submit)="onSumbit()">
+            <div class="ui grid">
+             
+              <div class="sixteen wide column">
+                <div class="field">
+                  <label for="email">Email:</label>
+                  <input type="text" name="email" id="email" [(ngModel)]="email" required>
+                </div>
+                <div class="field">
+                  <label for="password">Password:</label>
+                  <input  #passwordField type="password" name="password" id="password" [(ngModel)]="password" required>
+                </div>
+                <div class="field">
+                  <label for="password">Password confirmation:</label>
+                  <input  #passwordConfirmationField  type="password" name="password" id="password" [(ngModel)]="confirmPassword" required>
+                </div>
+              </div>
+              <div class="sixteen wide column">
+                <button type="submit" [disabled]="!isValidPassword()" class="ui primary fluid button" value="Register">Register</button>
+    
+              </div>
+            </div>
+            
+          </form>
+        
+        </div>
+      </div>
+      <div class="ui three wide column"></div>
+    </div>
+    
+  </div>
+</div>
+
+

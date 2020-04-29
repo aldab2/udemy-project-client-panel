@@ -1,0 +1,63 @@
+<div class="ui container" style="margin-top: 2rem;">
+  <form class="ui form" (submit)="onSubmit()">
+    <div class="ui grid">
+      <div class="row">
+        <div class="ui three wide column"></div>
+        <div class="ui ten wide  column">
+          <div class="ui segments">
+            <div class="ui secondary segment">
+              <h3>Settings</h3>
+            </div>
+            <div class="ui raised segment">
+              <div class="ui checkbox">
+                <input
+                [checked]="settings?.allowRegistration"
+                (change)="settings.allowRegistration= !settings?.allowRegistration"
+
+                  type="checkbox"
+                  name="registration"
+                  id="registration"
+                />
+                <label for="registration">Allow Registration</label>
+              </div>
+              <div class="ui  divider"></div>
+              <div class="ui checkbox">
+                <input
+                  [checked]="settings?.disableBalanceOnAdd"
+                  (change)="settings.disableBalanceOnAdd= !settings?.disableBalanceOnAdd"
+                  type="checkbox"
+                  name="example"
+                  id="balance-add"
+                />
+                <label for="balance-add">Disable Balance On Add</label>
+              </div>
+              <div class="ui  divider"></div>
+              <div class="ui checkbox">
+                <input
+                [checked]="settings?.disableBalanceOnEdit"
+                (change)="settings.disableBalanceOnEdit =!settings?.disableBalanceOnEdit"
+                  type="checkbox"
+                  name="example"
+                  id="balance-eidt"
+                />
+                <label for="balance-eidt">Disable Balance On Edit</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui three wide column"></div>
+      </div>
+
+      <div class="row">
+        <div class="ui three wide column"></div>
+
+        <div class="ten wide column">
+          <button type="submit" class="ui fluid primary button" value="Save">
+            Save
+          </button>
+        </div>
+        <div class="ui three wide column"></div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,79 @@
+<div class="ui container" style="margin-top: 2rem;">
+  <div class="ui grid">
+    <div class="  row">
+      <div class="twelve wide bottom aligned column">
+        <a routerLink="/dashboard" class="primary inverted icon button"
+          ><i class="left angle icon"></i> Back to Dashboard</a
+        >
+      </div>
+      <div class="four wide bottom aligned column">
+        <div class="ui buttons">
+          <a routerLink="../edit/{{id}}" class="ui black button">Edit</a>
+          <a (click)="onDeleteClick()" class="ui red button">Delete</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="sixteen wide top aligned column">
+        <div class="ui divider"></div>
+      </div>
+    </div>
+    <div class="row">
+      <ng-template #loadingSegment>
+        <div class="ui active centered inline loader"></div>
+      </ng-template>
+      <div *ngIf="client?client:false; else loadingSegment " class="sixteen wide column">
+       
+          
+      
+        <div class="ui segments">
+          <div class="ui secondary segment">
+            <h2 style="color: black;">
+              {{ client?.firstName }} {{ client?.lastName }}
+            </h2>
+          </div>
+          <div class="ui segment">
+            <div class="ui grid">
+              <div class="eleven wide column">
+                <h3>Client ID: {{ client?.id }}</h3>
+              </div>
+              <div class="three wide column">
+                <h4 class="ui header">
+                  Balance:
+                  <span class="ui small header green"  [class.green]="hasBalance" [class.red]="!hasBalance">
+                     {{ client?.balance | currency: "SAR" }}
+                  </span>
+                  
+                </h4>
+                <form *ngIf="showBalanceUpdateInput && allowBalanceOnEdit" class="ui form"  (submit)="updateBalance()">
+                  <div class="field">
+                   
+                    <input type="number" name="update" placeholder="Update" [(ngModel)]="client.balance">
+
+
+                  </div>
+                  <button class="ui fluid button" type="submit">update</button>
+
+                </form>
+              </div>
+              <div class="two wide left aligned left floated  column">
+                  <button class="ui icon basic button">
+                    <i (click)="showBalanceUpdateInput = !showBalanceUpdateInput" class="ui pencil icon"></i>
+                  </button>
+
+              </div>
+            </div>
+            <div class="ui segments">
+              <div class="ui segment">
+                <p>Contanct Email : {{ client?.email }}</p>
+              </div>
+              <div class="ui segment">
+                <p>Contanct Phone : {{ client?.phone }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
